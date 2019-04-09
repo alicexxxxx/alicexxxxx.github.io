@@ -345,3 +345,7 @@
     .music {
         display: none;
     }
+
+    body {
+        cursor: url('./img/su.png'), default;
+    }
