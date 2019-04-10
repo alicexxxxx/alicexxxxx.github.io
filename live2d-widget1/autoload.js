@@ -1,4 +1,4 @@
-const live2d_path = "http://www.luolixilin.club/live2d-widget1/";
+const live2d_path = "./live2d-widget1/";
 //const live2d_path = "./";
 
 $("<link>").attr({
