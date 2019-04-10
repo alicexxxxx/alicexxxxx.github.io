@@ -12,6 +12,7 @@
 </head>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script src="https://cdn.bootcss.com/clickspark.js/1.16.0/clickspark.js"></script>
+<!-- <script src="huoyan.js"></script> -->
 <script type="text/javascript">
   $(document).ready(function () {
 
@@ -39,6 +40,7 @@
 
 <body>
   <script src="xinkong.js"></script>
+  <!-- <canvas id="fire"></canvas> -->
   <div id="t-ov">
     <div class="motime">
       <div id="head-body"></div>
@@ -62,20 +64,28 @@
   </div>
   <div class='feixu'>
   </div>
+  <!--延时跳转，后期加别的效果--hy-->
   <script>
     function delayURL(url, time) {
       setTimeout("top.location.href = '" + url + "'", time)
     }
   </script>
-  <!--延时跳转，后期加别的效果--hy-->
+
 
   <style>
+    /* #fire {
+      position: absolute;
+      opacity: 0.1;
+      background: #333;
+    } */
+
     .feixu {
       width: 100%;
       height: 200px;
       background: url('./img/feixu.jpg') no-repeat;
       background-size: 100% 100%;
       opacity: 0.2;
+      background-blend-mode: overlay;
 
     }
 
@@ -108,7 +118,7 @@
     }
 
     body {
-      /* background: #333; */
+      background: #333;
       min-width: 320px;
       margin: 0 0;
 
