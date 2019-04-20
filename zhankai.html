@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=0.5">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>十六夜幽幽蝶</title>
+    <style>
+        * {
+            margin: 0 0;
+            padding: 0 0;
+        }
+
+        .touxiang {
+            height: 100px;
+            width: 100px;
+            /* border: solid 1px red; */
+            border-radius: 50px;
+            background: blue;
+            margin: 0 auto;
+
+        }
+
+        .wrap {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 300px;
+        }
+
+        .text {
+            margin-top: 20px;
+        }
+
+        .eee {
+            height: 60px;
+            width: 60px;
+            background: yellow;
+            font-size: 12px;
+            margin-bottom: 30px;
+            margin: 0 10px;
+            display: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .ceshi2 {
+            display: block;
+        }
+
+        body {
+            background: url(./img/1-1.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: center center;
+            width: 100%;
+            height: 800px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="wrap">
+        <ui id="ceshi2">
+            <li class="eee"><a href="#">学习</a></li>
+            <li class="eee"><a href="#">相册</a></li>
+            <li class="eee"><a href="#">游戏</a></li>
+            <li class="eee"><a href="#">动漫</a></li>
+        </ui>
+        <div class="touxiang" onclick="change()">
+            <img src="" alt="">
+        </div>
+        <div class="text">十六夜幽幽蝶</div>
+    </div>
+    <script>
+        function change() {
+            var ceshi = document.getElementsByClassName("eee")
+            for (var i = 0; i < ceshi.length; i++) {
+                if (ceshi[i].style.display == "inline-block") {
+                    ceshi[i].style.display = "none"
+                    ceshi[i].style.transform = "skew(0, -30deg) rotate(-30deg)"
+                    ceshi[i].style.transition = "3000"
+                } else {
+                    ceshi[i].style.display = "inline-block"
+                    ceshi[i].style.transform = "skew(0, -30deg) rotate(-30deg)"
+                    ceshi[i].style.transition = "3000"
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
