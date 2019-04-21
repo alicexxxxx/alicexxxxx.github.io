@@ -3,13 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=0.5">
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>十六夜幽幽蝶</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" />
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="./live2d-widget1/autoload.js"></script>
     <style>
         * {
             margin: 0 0;
             padding: 0 0;
+        }
+
+        body {
+            cursor: url('./img/su.png'), default;
         }
 
         .touxiang {
@@ -17,9 +24,21 @@
             width: 100px;
             /* border: solid 1px red; */
             border-radius: 50px;
-            background: blue;
+            /* background: blue; */
             margin: 0 auto;
+            overflow: hidden;
+            margin-top: 30px;
 
+
+        }
+
+        .music {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
         }
 
         .wrap {
@@ -27,20 +46,30 @@
             margin: 0 auto;
             text-align: center;
             margin-top: 300px;
+            position: relative;
+            top: -200px;
         }
 
         .text {
             margin-top: 20px;
+            font-size: 30px;
+            font-weight: bold;
         }
 
         .eee {
             height: 60px;
             width: 60px;
-            background: yellow;
+            /* background: yellow; */
             font-size: 12px;
-            margin-bottom: 30px;
+            margin-bottom: 60px;
             margin: 0 10px;
-            display: none;
+            display: inline-block;
+            visibility: hidden;
+        }
+
+        .eee:hover {
+            transform: scale(1.5);
+            transition: 5000;
         }
 
         a {
@@ -60,36 +89,167 @@
             height: 800px;
             overflow: hidden;
         }
+
+        .www {
+            font-family: 'Audiowide';
+            text-align: center;
+            color: #6400a6;
+            -webkit-transition: all 1.5s ease;
+            transition: all 1.5s ease;
+
+        }
+
+        .www:hover {
+            color: #fff;
+            -webkit-animation: Glow 1.5s ease infinite alternate;
+            animation: Glow 1.5s ease infinite alternate;
+        }
+
+        .text {
+            font-family: 'Audiowide';
+            text-align: center;
+            color: #6400a6;
+            -webkit-transition: all 1.5s ease;
+            transition: all 1.5s ease;
+        }
+
+        .text:hover {
+            color: #fff;
+            -webkit-animation: Glow 1.5s ease infinite alternate;
+            animation: Glow 1.5s ease infinite alternate;
+
+        }
+
+        @-webkit-keyframes Glow {
+            from {
+                text-shadow: 0 0 10px #fff,
+                    0 0 20px #fff,
+                    0 0 30px #fff,
+                    0 0 40px #a60061,
+                    0 0 70px #a60061,
+                    0 0 80px #a60061,
+                    0 0 100px #a60061,
+                    0 0 150px #a60061;
+            }
+
+            to {
+                text-shadow: 0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 15px #fff,
+                    0 0 20px #a60061,
+                    0 0 35px #a60061,
+                    0 0 40px #a60061,
+                    0 0 50px #a60061,
+                    0 0 75px #a60061;
+            }
+        }
+
+        @keyframes Glow {
+            from {
+                text-shadow: 0 0 10px #fff,
+                    0 0 20px #fff,
+                    0 0 30px #fff,
+                    0 0 40px #a60061,
+                    0 0 70px #a60061,
+                    0 0 80px #a60061,
+                    0 0 100px #a60061,
+                    0 0 150px #a60061;
+            }
+
+            to {
+                text-shadow: 0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 15px #fff,
+                    0 0 20px #a60061,
+                    0 0 35px #a60061,
+                    0 0 40px #a60061,
+                    0 0 50px #a60061,
+                    0 0 75px #a60061;
+            }
+        }
     </style>
+    <script>
+        window.onload = function () {
+            document.onkeydown = function () {
+                var e = window.event || arguments[0];
+                if (e.keyCode == 123) {
+                    alert("你知道了又有什么用呢");
+                    return false;
+                } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+                    alert("你知道了又有什么用呢");
+                    return false;
+                } else if ((e.ctrlKey) && (e.keyCode == 85)) { //追加
+
+                    return false;
+                }
+            };
+            document.oncontextmenu = function () {
+                alert("你知道了又有什么用呢");
+                return false;
+            }
+        }
+    </script>
+    <!--屏蔽右键-->
 </head>
 
 
 <body>
+    <iframe allow="autoplay" src="./music/yanshen.mp3" class="music"></iframe>
     <div class="wrap">
+        <!-- <div>
+            <form method="post">
+                <input type="password" name="fname" id="sun" />
+                <input type="submit" value="名字拼音" onclick="nicai()" />
+            </form>
+        </div>
+        <script>
+            function nicai() {
+                var sun = document.getElementById('sun').value
+                if (sun == 123) {
+                    window.location.href = 'sun.html';
+
+                } else {
+                    alert('对不起，不是，再见')
+                }
+            }
+        </script> -->
         <ui id="ceshi2">
-            <li class="eee"><a href="#">学习</a></li>
-            <li class="eee"><a href="#">相册</a></li>
-            <li class="eee"><a href="#">游戏</a></li>
-            <li class="eee"><a href="#">动漫</a></li>
+            <li class="eee"><a href="javascript:void(0);" onclick="sun()"><img src="img/2.png" alt=""><span
+                        class="www">我喜欢的人</span></a></li>
+            <li class="eee"><a href="javascript:void(0);"><img src="img/3.png" alt=""><span class="www">动漫收藏</span></a>
+            </li>
+            <li class="eee"><a href="javascript:void(0);"><img src="img/4.png" alt=""><span class="www">我画的</span></a>
+            </li>
+            <li class="eee"><a href="javascript:void(0);"><img src="img/5.png" alt=""><span class="www">小游戏</span></a>
+            </li>
         </ui>
         <div class="touxiang" onclick="change()">
-            <img src="" alt="">
+            <img src="img/1.jpg" alt="">
         </div>
-        <div class="text">十六夜幽幽蝶</div>
+        <div class="text" onclick="change()">十六夜幽幽蝶</div>
     </div>
     <script>
         function change() {
             var ceshi = document.getElementsByClassName("eee")
             for (var i = 0; i < ceshi.length; i++) {
-                if (ceshi[i].style.display == "inline-block") {
-                    ceshi[i].style.display = "none"
-                    ceshi[i].style.transform = "skew(0, -30deg) rotate(-30deg)"
-                    ceshi[i].style.transition = "3000"
+                if (ceshi[i].style.visibility == "visible") {
+                    ceshi[i].style.visibility = "hidden"
+                    // ceshi[i].style.transform = "skew(0, -30deg) rotate(-30deg)"
+                    // ceshi[i].style.transition = "3000"
                 } else {
-                    ceshi[i].style.display = "inline-block"
-                    ceshi[i].style.transform = "skew(0, -30deg) rotate(-30deg)"
-                    ceshi[i].style.transition = "3000"
+                    ceshi[i].style.visibility = "visible"
+                    // ceshi[i].style.transform = "skew(0, -30deg) rotate(-30deg)"
+                    // ceshi[i].style.transition = "3000"
                 }
+            }
+        }
+
+        function sun() {
+            var sun = prompt("是谁")
+            if (sun == '孙荣波') {
+                window.location.href = 'sun.html';
+            } else {
+                alert('对不起，不是，再见')
             }
         }
     </script>
