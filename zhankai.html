@@ -187,14 +187,31 @@
                 alert("你知道了又有什么用呢");
                 return false;
             }
-        }
+        };
     </script>
     <!--屏蔽右键-->
 </head>
 
 
 <body>
-    <iframe allow="autoplay" src="./music/yanshen.mp3" class="music"></iframe>
+    <iframe allow="autoplay" src="./music/yanshen.mp3" class="music" id="ra"></iframe>
+    <audio src="./music/yanshen.mp3" id="ad" autoplay loop></audio>
+    <script>
+        (() => {
+            var explorer = navigator.userAgent;
+            var ad = document.getElementById('ad')
+            var ra = document.getElementById('ra')
+            if (explorer.indexOf("Chrome") >= 0) {
+                console.log(222)
+                ad.pause()
+                alert(谷歌)
+                console.log(333)
+            } else {
+                ra.src = ''
+                console.log(aaa)
+            }
+        })()
+    </script>
     <div class="wrap">
         <!-- <div>
             <form method="post">
