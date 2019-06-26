@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function lazyload() {
+            const options = {
+                threshold: [0]
+            }
+            var io = new IntersectionObserver((entries) => {
+                entries.forEach((item) => {
+                    if (item.isIntersecting) {
+                        item.target.src = item.target.dataset.src
+                        io.unobserve(item.target)
+                    }
+                })
+            }, options)
+            const imgs = Array.from(document.querySelectorAll(".items"));
+            imgs.forEach(item => io.observe(item));
+        }
+        //图片懒加载
+        function addDiv() {
+            let warp = document.createElement("div")
+            warp.setAttribute("class", "waterfall")
+            document.body.appendChild(warp)
+            for (let i = 0; i < 200; i++) {
+                let ce = parseInt(Math.random() * 50 + 300)
+                console.log(ce)
+                let div = document.createElement('div');
+                div.setAttribute("class", "ceshi")
+                let img = document.createElement('img');
+                img.setAttribute("class", "items")
+                img.setAttribute("data-src", `http://via.placeholder.com/300x${ce}`)
+                div.appendChild(img);
+                document.getElementsByClassName("waterfall")[0].appendChild(div);
+            }
+            lazyload()
+        }
+        addDiv()
+        //创建div
+    </script>
+</body>
+
+</html>
