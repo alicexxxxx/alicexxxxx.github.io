@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var images = new Array()
+
+        function preload() {
+            for (i = 0; i < preload.arguments.length; i++) {
+                images[i] = new Image()
+                images[i].src = preload.arguments[i]
+            }
+        }
+        preload(
+            "http://www.luolixilin.club/img/1.jpg",
+            "http://www.luolixilin.club/img/2.png",
+            "http://www.luolixilin.club/img/3.png"
+        )
+        //通过建立一个新的图片数组，将图片数据先下载下来，之后src直接从缓存里面拿图片
+    </script>
+</body>
+
+</html>
