@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*let与const的区别，const不存在赋值阶段*/
+        let a = 1
+        if (!0) {
+            console.log(a)
+            let a = 2
+        }
+        /*申明let a =1 如果let不存在变量提升那么console.log(a)
+        为1，但是实际上却报错了，说明let存在变量提升，但是只是提升
+        了let的创建过程，let的初始化与赋值过程没有提升，所以let有
+        暂时性死区*/
+    </script>
+    <script>
+        let y = x
+        /*如果let申明一个未定义的变量，会导致y一直处于一个既被定义
+        有没被定义的状态，但是其他js文件都无法使用y*/
+    </script>
+    <script>
+        var y = 1
+    </script>
+    <script>
+        var y = 2
+    </script>
+</body>
+
+</html>
