@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .a {
+            width: 100%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            background-color: #444;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="container" class="a"></div> -->
+    <div id="container1" class="a"></div>
+    <div id="container2" class="a"></div>
+    <div id="container3" class="a"></div>
+    <script>
+        var count = 1;
+        var count1 = 1
+        var count2 = 1
+        var count3 = 1
+        var container = document.getElementById('container');
+        var container1 = document.getElementById('container1')
+        var container2 = document.getElementById('container2')
+        var container3 = document.getElementById('container3')
+
+        /*function getUserAction() {
+            container.innerHTML = count++;
+            console.log("测试")
+        };
+
+        function debounce(func, wait) {
+            console.log(123)
+            var timeout;
+            console.log(timeout)
+            clearTimeout(timeout)
+            timeout = setTimeout(func, wait);
+        };
+        container1.onclick = function () {
+            debounce1(getUserAction1, 1000)
+        };
+        (理解)每运行一次函数产生一个新的执行上下文，所以timeout的状态没有保留clearTimeout没生效
+        --------错误-------*/
+        function getUserAction1() {
+            container1.innerHTML = count1++;
+            console.log("测试")
+        };
+
+        function debounce1(func, wait) {
+            var timeout;
+            console.log(123)
+            return function () {
+                clearTimeout(timeout)
+                timeout = setTimeout(func, wait);
+            }
+        };
+        container1.onclick = debounce1(getUserAction1, 1000);
+        //(理解)使用闭包的时候会保留timeout的状态，执行上下文不会完全消失，所以clearTimeout可以生效
+        function getUserAction2() {
+            container2.innerHTML = count2++;
+        };
+
+        function debounce2(func, wait) {
+            var timeout;
+            console.log(timeout)
+            console.log(this)
+            console.log(123)
+            return function () {
+                var that = this
+                var args = arguments;
+                console.log(that)
+                clearTimeout(timeout)
+                timeout = setTimeout(function () {
+                    func.apply(that, args)
+                }, wait);
+            }
+        }
+        container2.onclick = debounce2(getUserAction2, 1000);
+        /*getUserAction2单独执行时this指向调用它的对象，但是在debounce2中执行时，getUserAction2独立运行指向全局，
+        debounce2的this指向调用它的对象，通过that存储this，通过apply改变getUserAction2的this指向,getUserAction2
+        在debounce2中无法拿到event事件对象，通过arguments和apply将事件对象传入getUserAction2中*/
+        function getUserAction3() {
+            container3.innerHTML = count3++;
+        };
+
+        function throttle(func, wait) {
+            var timeout;
+            return function () {
+                context = this;
+                args = arguments;
+                if (!timeout) {
+                    timeout = setTimeout(function () {
+                        timeout = null;
+                        func.apply(context, args)
+                    }, wait)
+                }
+
+            }
+        }
+        container3.onclick = throttle(getUserAction3, 5000);
+        //节流
+    </script>
+</body>
+
+</html>
