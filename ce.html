@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ce {
+            width: 100%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            background-color: #444;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ce" id="ces"></div>
+    <script>
+        var ce = document.getElementById('ces')
+
+        function cee() {
+            console.log(123)
+            return function () {
+                console.log(456)
+            }
+        }
+        ce.onclick = cee
+        /*<div class="ce" id="ces" onclick="cee()"></div>为什么等于ce.onclick=cee
+        或者等于ce.onclick=function(){cee()}
+        而不等于ce.onclick=cee()*/
+    </script>
+</body>
+
+</html>
