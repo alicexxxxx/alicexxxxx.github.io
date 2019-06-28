@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--es6数组扁平化-->
+    <script>
+        //flat es6 用于将数组变成一维数组
+        //set es6 是一个不存在重复元素的数组，可用于去重
+        //array.form将类数组转化为数组
+        //sort()排序
+        var arr = [1, 2, [1, 2, 4, 5, [6, 7, 1, 4, [1, 2, 3]]]];
+        var flattenDeep = function (arr) {
+            return Array.from(new Set(arr.flat(999))).sort((a, b) => {
+                return a - b
+            })
+            //(??)这个箭头函数只有一条语句，但是省略的return以后，却并没有执行return
+        }
+        var na = flattenDeep(arr)
+        console.log(na)
+    </script>
+</body>
+
+</html>
