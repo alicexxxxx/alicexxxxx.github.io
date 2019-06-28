@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+</head>
+
+<body>
+    <script>
+        //(?)异步时如何在外部拿到ajax获取的变量（除去定时器）,实际上是拿到了但是是异步的，根据event loop
+        //ajax与setTime都进宏观队列，但是没法保证ajax拿到数据的时间比自己设计的定时器的时间短(已解决)
+        var a = false
+        $.ajax({
+            async: true,
+            type: "GET",
+            url: "http://www.luolixilin.club/j.json",
+            dataType: "json",
+            success: function (data) {
+                a = data
+                return new Promise(function (resolve, reject) {
+                    if (data.n == 1) {
+                        resolve(data)
+                        console.log(data.n)
+                    } else {
+                        alert("错误")
+                    }
+                }).then(function (data) {
+                    console.log(data.first)
+                    return data
+                    //链式传参
+                }).then(function (data) {
+                    console.log(data.second)
+                    return data
+                }).then(function (data) {
+                    console.log(data.third)
+                    return data
+                }).then(null, function (data) {
+                    console.log(data.msg)
+                })
+            },
+            error: function () {
+                alert("网络错误")
+            }
+        })
+
+        // function b() {
+        //     console.log(a)
+        // }
+        // setTimeout(b, 500)
+
+        setInterval(function () {
+            console.log("测试")
+            if (a != false) {
+                console.log(a)
+                clearInterval(1)
+            }
+        }, 0)
+        //(解决方式，通过setInterval)，但是比较耗费性能，正在想其他解决方法
+    </script>
+</body>
+
+</html>
