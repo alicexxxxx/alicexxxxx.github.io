@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1 {
+            height: 100px;
+            width: 100px;
+            float: left;
+            background: lightblue;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background: #eee;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!--bfc块级格式化上下文，可以生成一个独立的区域，这个区域里面外部元素不会影响到他，他也不会影响外部元素-->
+    <!--开启BFC的方法
+        float属性不为none
+
+        position为absolute或fixed
+
+        display为inline-block, table-cell, table-caption, flex, inline-flex
+
+        overflow不为visible-->
+    <div class="box1">我是一个左浮动的元素测试测打啊是的额啊大大啊燃烧弹按时额的擦是大额按时打算的sad</div>
+    <!--(??)此处box1设置了float应该也是bfc，但是如果文字超出了，box2不是bfc时，box1对box2造成了影响(此处矛盾)-->
+    <div class="box2">喂喂喂!大家不要生气嘛，生气会犯嗔戒的。悟空你也太调皮了，
+        我跟你说过叫你不要乱扔东西，你怎么又……你看，我还没说完你就把棍子给扔掉了!
+        月光宝盒是宝物，你把它扔掉会污染环境，要是砸到小朋友怎么办，就算砸不到小朋友，
+        砸到花花草草也是不对的。</div>
+    <!--如果box2不是块级格式化上下文即bfc那么会产生文字环绕，如果给box2设置overflow:auto把他变成bfc则不会产生文字环绕-->
+
+</body>
+
+</html>
