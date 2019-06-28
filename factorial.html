@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function factorial(n) {
+            if (n === 1) {
+                return 1
+            }
+            return n * factorial(n - 1)
+
+        }
+        var a = factorial(5)
+        console.log(a)
+        //由于调用factorial时上一个函数还没有完全执行完，所以不会出栈，容易导致栈溢出
+        //改写
+        function factorial1(n, total = 1) {
+
+            if (n === 1) {
+                return total
+            }
+            return factorial1(n - 1, n * total)
+        }
+        var b = factorial1(5)
+        console.log(b)
+        /*由于递归时，上一个函数已经运行完成弹出栈了，所以当函数的最后一步是调用一个函数
+        （尾调用）时，栈内只会有全局上下文和当前函数的上下文，不会发生栈溢出的情况
+        total=1 函数默认值 ES6新特性*/
+    </script>
+</body>
+
+</html>
