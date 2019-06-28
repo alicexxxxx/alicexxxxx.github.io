@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var ce = 1
+
+        function addEvent() {
+            if (ce) {
+                addEvent = function () {
+                    console.log("改变")
+                }
+            } else {
+                addEvent = function () {
+                    console.log("改变1")
+                }
+            }
+        }
+        console.log(addEvent)
+        addEvent()
+        console.log(addEvent)
+        addEvent()
+        console.log(addEvent)
+        //当每次都需要进行条件判断，其实只需要判断一次，接下来的使用方式都不会发生改变的时候，可以使用惰性函数。
+        //原理第一次运行函数后，通过条件函数被重写
+    </script>
+</body>
+
+</html>
