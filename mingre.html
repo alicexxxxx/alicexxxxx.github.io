@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="referrer" content="never">
+    <meta rel="shortcut icon" href="./icon.ico">
+    <title>copy明日方舟官网</title>
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <style>
+        * {
+            margin: 0 0;
+            padding: 0 0;
+        }
+
+        /*解决间距问题*/
+        .movie {
+            font-size: 0px;
+        }
+
+        .movie-inside {
+            /* position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); */
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            overflow: hidden;
+            opacity: 1;
+            display: inline-block;
+            object-fit: cover;
+            vertical-align: baseline;
+        }
+
+
+        .movie::after {
+            content: "";
+            background-image: url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk-mask.png);
+            background-color: rgba(0, 0, 0, .25);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .btn-1 {
+            display: block;
+            background: white;
+            height: 3px;
+            width: 25px;
+            z-index: 999;
+            margin: 5px 0;
+        }
+
+        .btn {
+            opacity: 1;
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            position: fixed;
+            margin: 20px 0 0 20px;
+            z-index: 999;
+        }
+
+        .content {
+            display: inline-block;
+            position: fixed;
+            z-index: 999;
+            left: 0px;
+            top: 55px;
+        }
+
+        .content-inside {
+            margin-left: 20px;
+            width: auto;
+            height: auto;
+            border-left: 1px white solid;
+        }
+
+        a {
+            display: block;
+            margin: 10px 0;
+            text-decoration-line: none;
+            color: antiquewhite;
+        }
+
+        .line1 {
+            margin-bottom: 30px;
+        }
+
+        /*css改變寬度動畫*/
+        .line1::before {
+            content: "";
+            display: inline-block;
+            height: 5px;
+            width: 0px;
+            background: #2bf;
+            transition-property: all;
+            transition-duration: 2s;
+        }
+
+        .line1:hover::before {
+            width: 110px;
+            margin-right: 15px;
+        }
+
+        .lx::before {
+            width: 110px;
+            margin-right: 15px;
+        }
+
+        /*css改變寬度動畫*/
+        .content-inside2 {
+            margin-left: 20px;
+            background: rgba(0, 0, 0, .25);
+            width: 200px;
+        }
+
+        /*滚动条样式*/
+        body::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+            background-color: yellowgreen;
+        }
+
+        /*滚动条轨道*/
+        body::-webkit-scrollbar-track {
+            background-color: rgb(109, 101, 101);
+        }
+
+        /*滚动条滑块*/
+        body::-webkit-scrollbar-thumb {
+            background-color: rgb(240, 224, 10);
+        }
+
+        /*旋转*/
+        .rot1 {
+            transform-origin: left top;
+            transform: rotate(45deg)
+        }
+
+        .rot2 {
+            display: none;
+        }
+
+        .rot3 {
+            transform-origin: left bottom;
+            transform: rotate(-45deg)
+        }
+
+        .login {
+            float: right;
+            z-index: 999;
+            position: absolute;
+            top: 20px;
+            right: 60px;
+        }
+
+        .login>ul>li {
+            list-style: none;
+            display: inline-block;
+            color: aliceblue;
+        }
+
+        .down {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20px;
+            padding: 20px 0;
+            border-top: white 1px solid;
+            border-bottom: white 1px solid;
+            width: 40%;
+            height: 200px;
+        }
+
+        .down-inside {
+            background: rgba(0, 0, 0, .5);
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .ak {
+            position: absolute;
+            right: 30px;
+            bottom: 300px;
+            width: 400px;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        /*滑块*/
+        .sroll {
+            position: absolute;
+            right: 180px;
+            bottom: 200px;
+        }
+
+
+        .sroll-block {
+            width: 23px;
+            height: 43px;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAwBAMAAAD5pqeQAAAAKlBMVEVMaXH////////////////////////////////////////////////////m1kuZAAAADXRSTlMAH1Ohk/gGKxTc2L42KqskgAAAAKZJREFUKM9jYCAPJFnFRhklQNhMc+8CwSQwm832qlFhkeldMxAn+64HkOTwvQ1SaBsEURxrACTuKkC06l5iYMi8AjWT5WYCg24EkCEuANQVq8BgC1TK4OsA0mzAsFYBxtFdwBBbAOPUBjDcFYBxZC+QxDl0AIkDBoOPA/YpGAB9ulYBxgGGATh0wADIAocbCIDCDSVEUcIaJRZQ4wcl5lDiFDW2KQMAQbFUmWAzIJsAAAAASUVORK5CYII=);
+            position: relative;
+            animation: mymove 3s;
+            animation-iteration-count: infinite;
+            animation-fill-mode: none;
+        }
+
+        @keyframes mymove {
+            from {
+                top: 0;
+            }
+
+            to {
+                top: 200px;
+            }
+        }
+
+        .sroll::before {
+            content: "";
+            width: 1px;
+            background: whitesmoke;
+            display: block;
+        }
+
+        .sroll::after {
+            content: "";
+            width: 1px;
+            background: whitesmoke;
+            display: block;
+        }
+
+        .news {
+            width: 80%;
+            height: 30px;
+            margin: 0 auto;
+            border: #535353 solid 1px;
+            background: rgba(0, 0, 0, .5);
+        }
+
+        .news>ul {
+            width: 20%;
+            float: right;
+            height: 30px;
+            line-height: 30px;
+            font-size: 0
+        }
+
+        .news>ul>li {
+            display: inline-block;
+            list-style: none;
+            color: white;
+            padding: 0 10px;
+            font-size: 15px
+        }
+
+        .news>ul>li:hover {
+            background: #2bf;
+        }
+
+        .news>ul>li:nth-child(1) {
+            background: #2bf;
+        }
+
+        .news-warp {
+            background: black;
+        }
+
+        .banner {
+            margin: 0 auto;
+            overflow: hidden;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .banner>ul {
+            display: flex;
+        }
+
+        .banner>ul>li {
+            position: relative;
+            list-style: none;
+            font-size: 0px;
+        }
+
+        .banner>ul>li>img {
+            width: 100%;
+            font-size: 0px;
+        }
+
+        .zhanshi {
+            display: flex;
+            flex-wrap: wrap;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .zhanshi>div {
+            border: #535353 1px solid;
+            width: 33.3%;
+            height: 180px;
+            box-sizing: border-box;
+            padding: 15px;
+        }
+
+        .zhanshi>div:hover {
+            background: rgb(0, 204, 255) !important;
+            color: black !important;
+        }
+
+        .zhanshi>div:hover>.content1>div {
+            color: black;
+        }
+
+        .zhanshi>div:hover>div:nth-child(2) {
+            background: black
+        }
+
+        .zhanshi>div:hover>div:nth-child(3) {
+            color: black;
+        }
+
+        .zhanshi>div:hover>div:nth-child(4) {
+            color: white;
+            background: black;
+        }
+
+        .content1 {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .content1>div:nth-child(1) {
+            color: #2bf;
+        }
+
+        .content1>div:nth-child(2) {
+            color: #898989;
+        }
+
+        .zhanshi>div>div:nth-child(2) {
+            background: #2bf;
+            height: 4px;
+            width: 10%;
+            margin: 20px 0 17px 0;
+        }
+
+        .zhanshi>div>div:nth-child(3) {
+            color: whitesmoke;
+        }
+
+        .zhanshi>div>div:nth-child(4) {
+            text-align: right;
+            font-size: 14px;
+            font-family: Bender;
+            text-transform: uppercase;
+            color: black;
+            background: #2bf;
+            padding: 2px 5px 2px 10px;
+            width: 30%;
+            float: right;
+            margin-top: 40px;
+        }
+
+        .xian {
+            display: flex;
+            position: absolute;
+            width: 240px;
+            height: 10px;
+            bottom: 3px;
+            left: 5px;
+        }
+
+        .xian>div {
+            width: 25%;
+            box-sizing: border-box;
+            padding: 2px;
+            height: 10px;
+            background: #535353;
+            background-clip: content-box;
+        }
+
+        .change {
+            background: whitesmoke !important;
+            background-clip: content-box !important;
+        }
+
+        .ceee {
+            width: 30%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .ceee>div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .ceee>div:nth-child(2) {
+            text-align: left;
+            color: #838383;
+            height: auto;
+            font-size: 16px;
+            margin-top: 8px;
+            margin-left: 20px;
+        }
+
+        .ceee>div:nth-child(3) {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 2px 0px 2px 40px;
+            background: yellow;
+            width: 30%;
+            height: auto;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .ceee>div>div:nth-child(1) {
+            width: 10%;
+            margin-left: 20px;
+            padding-bottom: 20px;
+            padding-left: 5px;
+            border-bottom: 3px yellow solid;
+        }
+
+        .ceee>div>div:nth-child(2) {
+            width: 80%;
+            text-align: right;
+            color: yellow;
+            font-size: 16px;
+            padding-bottom: 20px;
+            border-bottom: 1px #535353 solid;
+        }
+
+        .luodedao {
+            display: flex;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .luodedao>div {
+            width: 20%;
+            height: auto;
+            opacity: .5;
+            transition-duration: 1s;
+        }
+
+        .luodedao>div>img {
+            width: 100%;
+            height: auto;
+        }
+
+        .luodedao>div:hover {
+            opacity: 1;
+        }
+
+        .luodedao-warp {
+            background: black;
+        }
+
+        .more {
+            width: 80%;
+            background: black;
+            margin: 0 auto;
+        }
+
+        .more>div {
+            box-sizing: border-box;
+            border: 1px #2bf solid;
+            width: 10%;
+            float: right;
+            margin-top: 10px;
+            color: white;
+            padding: 2px 5px 2px 5px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .more::after {
+            content: "";
+            display: block;
+            clear: both;
+            width: 0px;
+            height: 0px;
+            overflow: hidden;
+        }
+
+        .more>div:hover {
+            background: #2bf;
+            color: black;
+        }
+
+        .bianhei {
+            background: black
+        }
+
+        .zuobiao>img {
+            width: 100%;
+            height: auto;
+        }
+
+        .zuobiao {
+            position: relative;
+            font-size: 0px;
+        }
+
+        .yuanshi {
+            border: 8px solid white;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 150px;
+            left: 150px;
+            box-shadow: -10px 10px 10px #838383 inset, -10px 10px 10px #838383;
+        }
+
+        .zuobiao>div>img:hover {
+            transition-duration: .5s;
+            /* transform-origin: right bottom; 基点*/
+            transform: scale(1.1) !important;
+        }
+
+        .zuobiao>div>img:hover+div {
+            transition-duration: 1s;
+            opacity: .8;
+        }
+
+        .zuobiao>div>div {
+            position: absolute;
+            opacity: 0;
+            bottom: -80px;
+            left: -30px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .zuobiao>div>img {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            z-index: 2;
+            top: -100px;
+            left: -100px;
+        }
+
+        .zhenhe {
+            border: 8px solid white;
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 60px;
+            left: 650px;
+            box-shadow: -10px 10px 10px #838383 inset, -10px 10px 10px #838383;
+        }
+
+        .city {
+            border: 8px solid white;
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            top: 130px;
+            left: 1000px;
+            box-shadow: -10px 10px 10px #838383 inset, -10px 10px 10px #838383;
+        }
+
+        .jineng {
+            border: 8px solid white;
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 500px;
+            left: 500px;
+            box-shadow: -10px 10px 10px #838383 inset, -10px 10px 10px #838383;
+        }
+
+        .ganran {
+            border: 8px solid white;
+            width: 130px;
+            height: 130px;
+            position: absolute;
+            top: 400px;
+            left: 800px;
+            box-shadow: -10px 10px 10px #838383 inset, -10px 10px 10px #838383;
+        }
+
+        .amiya {
+            border: 8px solid white;
+            width: 170px;
+            height: 170px;
+            position: absolute;
+            top: 450px;
+            left: 1200px;
+            box-shadow: -10px 10px 10px #838383 inset, -10px 10px 10px #838383;
+        }
+
+        .pubu-wrap {
+            width: 100%;
+            height: auto;
+            background: black;
+        }
+
+        .pubu {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            overflow: hidden;
+            font-size: 0px;
+            height: 700px;
+        }
+
+        .pubu>div {
+            width: 20%;
+            flex-shrink: 1;
+            overflow: hidden;
+        }
+
+        .pubu>div:hover>img {
+            transition-duration: .5s;
+            transform: scale(1.1);
+        }
+
+        .pubu>div>img {
+            width: 100%;
+            height: auto;
+        }
+
+        .footer {
+            width: 100%;
+            height: auto;
+            background: black;
+        }
+
+        .footer-content {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer>div>div>ul>li {
+            display: inline-block;
+            list-style: none;
+            font-size: 14px;
+            font-weight: 800;
+            border-right: whitesmoke solid 1px;
+            color: whitesmoke;
+            padding: 0px 10px;
+        }
+
+        .footer>div>div>.ee1 {
+            display: flex;
+            flex-wrap: wrap;
+            width: 70%;
+            margin: 0 auto;
+            color: #838383;
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            align-content: center;
+        }
+
+        .footer>div>div>.ee1>div {
+            flex-basis: 50%;
+            margin-top: 3px;
+        }
+
+        .footer>div>div>.ee1>div:nth-child(6) {
+            flex-basis: 100%;
+            width: 100%;
+        }
+
+        .e22 {
+            display: flex;
+            width: 100%;
+            color: #838383;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .e22>div {
+            margin: 0 8px;
+        }
+
+        .footer>.fanz {
+            width: 100%;
+            height: auto;
+            padding: 50px 0;
+            border-top: solid 1px #535353;
+            border-bottom: solid 1px #535353;
+        }
+
+        .er {
+            width: 70%;
+            margin: 0 auto;
+            margin-top: 20px;
+            color: #838383;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .er>div {
+            margin-bottom: 3px;
+        }
+
+        .er3 {
+            font-size: 10px;
+            margin-top: 5px;
+        }
+
+        /* 
+        select {
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            -ms-appearance: none;
+            border: 1px solid #535353;
+            width: 50px;
+            height: 20px;
+            background: black;
+            color: white;
+            padding: 8px;
+        } */
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="btn">
+            <span class="btn-1"></span>
+            <span class="btn-1"></span>
+            <span class="btn-1"></span>
+        </div>
+        <div class="content animated fadeInDown" style="display: none">
+            <nav class="content-inside">
+                <div class="content-inside2">
+                    <a href="#" class="line1 lx">凯尔西</a>
+                    <a href="#" class="line1">阿米娅</a>
+                    <a href="#" class="line1">能天使</a>
+                    <a href="#" class="line1">艾雅法拉</a>
+                    <a href="#" class="line1">斯卡蒂</a>
+                    <a href="#" class="line1">塔露拉</a>
+                </div>
+            </nav>
+        </div>
+        <div class="login">
+            <ul>
+                <li>登录</li>
+                <li>|</li>
+                <li>注册</li>
+                <li>联系客服</li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <div class="movie">
+            <video src="https://ak.hypergryph.com/assets/index/video/bg.mp4" autoplay="autoplay" muted="muted"
+                class="movie-inside" autobuffer="autobuffer" loop="loop"></video>
+        </div>
+        <div class="down">
+            <div class="down-inside">
+                <img src="data:image/png;base64,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"
+                    alt="明日方舟测试">
+            </div>
+        </div>
+        <div class="ak">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAAADSBAMAAAD3bqluAAAAMFBMVEVMaXH////////////////////////////////////////////////////////////6w4mEAAAAD3RSTlMAafGQx94hUg1+QbShMBfGa3SjAAAQaElEQVR42u2df4ycRRnH37vbu73bu1sKFlJawkoxgP3Be7ZW4SJeK4W2Im6VH9KifRejMQpmj4ApUeMtDU0TUfcUigGBW0WCfzS5lhRsxbAnwR9Uwx5UYzQmt6iNCf5x3fd2r73bPcZ533fe951535l39513tt1dd/6g3O29Pz47M898n2eemZGkdmmXdmmXdmmXdmmX81J6ploPaaH1kMBo6yGtbz2kUqLlkMBdrYdUbj0kMN7Yr5jhQDrT2EhrOJBApqGRVk9zIF3V0EjynRxIdbHjDwhDKqX8I4Ev1AFp7JgoJLCdA6lUh940U5oWhVThQKqH0UuCq0UhgSEOJPCycKS0qAEPIhV4kMAJ0UidAFRSgpB8uQsWErgtIxxJjNnRkNbwIMlA/b1QpBAQpLU0JDVRu0oykT4tPaeAdSIrql+7bXFaDBLY4/jllupIsLFGDsKKCt76MzgSWBCEVHS8WHy0KpL+bX41DoqXB32DG9G/A8aNbxWDBA47kBarIuWNnx4H4Eg+2BuY318XuvMyMUiO6o6r09WQzHq9Jw7KK4IhrSGRKmKQFqWw8V7Rv+tPAXfWiiRFV8GKCiJj48g69QG8TQdG2iz1qcPf/+nTR2X9XeOglK8VSZIezoLiEwGQkMrsMJEyQpDGpYhi3E81nsIUsxQkqffbMtihf9U/+PoL96/wjWQEM8LozkUxDQ92ybDBVEJIZR9IknTgNVB86rKX9Jud9Y1kqEwT6ZgwJGk/gQSm/CDpFYXK+/0j6SozYlw+J4lD6rKRFPatGUiwouLok83+kfTuYyCpowKR+kgkhtxiIhkazT3G1YR0xmp4N0t1RCr4RDKN8BAHkvb96RZvLlVPJPowzkYyu/c4D9Kc8XxVxLSIBxLVIWMjRTgFTRw1uG6R/hIDieo71AtJfSPuls/ikYB6ggNplAtJL/NS3ZEoFdXkSCf++mFXRdUNqQjfpJyvM1LJ8B3W7b3/0j8dvemziRqRMnx9KTG4CVqkh+qLpDtR0eVmq5B4kVbWgqR5SX9T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"
+                alt="明日方舟标题">
+        </div>
+        <!--模拟滑块-->
+        <div class="sroll">
+            <div class="sroll-block"></div>
+        </div>
+    </section>
+    <section class="bianhei">
+        <!--展示页面-->
+        <div class="news-warp">
+            <div class="news">
+                <ul>
+                    <li>最新</li>
+                    <li>公告</li>
+                    <li>活动</li>
+                    <li>新闻</li>
+                </ul>
+            </div>
+            <div class="banner">
+                <ul class="banner1">
+                    <Li class="lil"><img
+                            src="https://ak.hypergryph.com/upload/images/20190327/1d06b6b2cb8eb411ea62a22cf915fe53.png"
+                            alt="">
+                        <div class="ceee">
+                            <div>
+                                <div></div>
+                                <div>2019.7.15</div>
+                            </div>
+                            <div>7大CV首次公开</div>
+                            <div>read more +</div>
+                        </div>
+                    </Li>
+                    <Li class="lil"><img
+                            src="https://ak.hypergryph.com/upload/images/20190715/a6a1e3803eae3efdba4fc00f3aa3899a.png"
+                            alt="">
+                        <div class="ceee">
+                            <div>
+                                <div></div>
+                                <div>2019.7.15</div>
+                            </div>
+                            <div>7大CV首次公开</div>
+                            <div>read more +</div>
+                        </div>
+                    </Li>
+                    <Li class="lil"><img
+                            src="https://ak.hypergryph.com/upload/images/20190715/3ca8ea4cee32d525cc07e4df8f268c51.png"
+                            alt="">
+                        <div class="ceee">
+                            <div>
+                                <div></div>
+                                <div>2019.7.15</div>
+                            </div>
+                            <div>7大CV首次公开</div>
+                            <div>read more +</div>
+                        </div>
+                    </Li>
+                    <Li class="lil"><img
+                            src="https://ak.hypergryph.com/upload/images/20190430/1c4c415290965f7953f89009f77aeb37.png"
+                            alt="">
+                        <div class="ceee">
+                            <div>
+                                <div></div>
+                                <div>2019.7.15</div>
+                            </div>
+                            <div>7大CV首次公开</div>
+                            <div>read more +</div>
+                        </div>
+                    </Li>
+                    <Li class="lil"><img
+                            src="https://ak.hypergryph.com/upload/images/20190327/1d06b6b2cb8eb411ea62a22cf915fe53.png"
+                            alt="">
+                        <div class="ceee">
+                            <div>
+                                <div></div>
+                                <div>2019.7.15</div>
+                            </div>
+                            <div>7大CV首次公开</div>
+                            <div>read more +</div>
+                        </div>
+                    </Li>
+                    <Li class="lil"><img
+                            src="https://ak.hypergryph.com/upload/images/20190715/a6a1e3803eae3efdba4fc00f3aa3899a.png"
+                            alt="">
+                        <div class="ceee">
+                            <div>
+                                <div></div>
+                                <div>2019.7.15</div>
+                            </div>
+                            <div>7大CV首次公开</div>
+                            <div>read more +</div>
+                        </div>
+                    </Li>
+                </ul>
+                <div class="xian">
+                    <div class="a change"></div>
+                    <div class="a"></div>
+                    <div class="a"></div>
+                    <div class="a"></div>
+                </div>
+            </div>
+            <div class="zhanshi">
+                <div>
+                    <div class="content1">
+                        <div>公告</div>
+                        <div>2019-7-25</div>
+                    </div>
+                    <div></div>
+                    <div>[明日方舟]7月24日16:00闪断更新公告</div>
+                    <div>Read More +</div>
+                </div>
+                <div>
+                    <div class="content1">
+                        <div>公告</div>
+                        <div>2019-7-25</div>
+                    </div>
+                    <div></div>
+                    <div>[明日方舟]7月24日16:00闪断更新公告</div>
+                    <div>Read More +</div>
+                </div>
+                <div>
+                    <div class="content1">
+                        <div>公告</div>
+                        <div>2019-7-25</div>
+                    </div>
+                    <div></div>
+                    <div>[明日方舟]7月24日16:00闪断更新公告</div>
+                    <div>Read More +</div>
+                </div>
+                <div>
+                    <div class="content1">
+                        <div>公告</div>
+                        <div>2019-7-25</div>
+                    </div>
+                    <div></div>
+                    <div>[明日方舟]7月24日16:00闪断更新公告</div>
+                    <div>Read More +</div>
+                </div>
+                <div>
+                    <div class="content1">
+                        <div>公告</div>
+                        <div>2019-7-25</div>
+                    </div>
+                    <div></div>
+                    <div>[明日方舟]7月24日16:00闪断更新公告</div>
+                    <div>Read More +</div>
+                </div>
+                <div>
+                    <div class="content1">
+                        <div>公告</div>
+                        <div>2019-7-25</div>
+                    </div>
+                    <div></div>
+                    <div>[明日方舟]7月24日16:00闪断更新公告</div>
+                    <div>Read More +</div>
+                </div>
+            </div>
+        </div>
+        <div class="more">
+            <div>更多情报</div>
+        </div>
+    </section>
+    <section class="luodedao-warp">
+        <div class="luodedao">
+            <div><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1-on.png" alt=""></div>
+            <div><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2-on.png" alt=""></div>
+            <div><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/3-on.png" alt=""></div>
+            <div><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/4-on.png" alt=""></div>
+            <div><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/5-on.png" alt=""></div>
+        </div>
+    </section>
+    <!--坐标-->
+    <section class="zuobiao">
+        <img src="https://ak.hypergryph.com/assets/index/images/ak/pc/story/bk.jpg" alt="">
+        <div class="yuanshi">
+            <img src="https://ak.hypergryph.com/assets/index/images/ak/common/story/item_origin.png" alt="">
+            <div>源石<br>Originiums</div>
+        </div>
+        <div class="zhenhe" style="transform: translateX(0px)">
+            <img src="https://ak.hypergryph.com/assets/index/images/ak/common/story/item_reunion.png" alt="">
+            <div>整合运动<br>Reunion</div>
+        </div>
+        <div class="city">
+            <img src="https://ak.hypergryph.com/assets/index/images/ak/common/story/item_mortal_city.png" alt="">
+            <div>移动城邦<br>Nomadic City</div>
+        </div>
+        <div class="jineng">
+            <img src="https://ak.hypergryph.com/assets/index/images/ak/common/story/item_art_crafts.png" alt="">
+            <div>源石技艺<br>Originiums Arts</div>
+        </div>
+        <div class="ganran">
+            <img src="https://ak.hypergryph.com/assets/index/images/ak/common/story/item_infected.png" alt="">
+            <div>感染者<br>Infected</div>
+        </div>
+        <div class="amiya">
+            <img src="https://ak.hypergryph.com/assets/index/images/ak/common/story/item_rhodes.png" alt="">
+            <div>罗德岛<br>Rhodes Island</div>
+        </div>
+    </section>
+    <section class="pubu-wrap">
+        <div class="pubu">
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/287e5d3c4ed87eb7db2014afc8f7f9a9.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/03f494159043008f5b8d3611b16b37da.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/9a4aca35bbbbb3134c2ba89a05a97096.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/889e18357e82f1fc8bafccbc9feacc88.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/21c02d9f9b81eee63075736305ff8d95.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/dbd5574042e4fcc58a0d3eb87c7d4f90.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/b20fe2cbda4ddb34859f3b0b0a65b05d.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/7c5d4bc3b66b2c9e5739cbe5271bd72a.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/adfc4b05eacd752ffa6133e5be3117ed.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/cf3afe5baf1314667a47f7d8a47b5390.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/f5e129ab5a69d5b9c1490b9d27ec04c4.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/f08e8827f60a29acc1044823c2967433.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/c10a501b88fdc388bdab953e8bba8946.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/4baf65156f02dc7c2b1eee9eb45db12a.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/f1c3f07272f366f420075639ea500efb.png"
+                    alt=""></div>
+            <div><img src="https://ak.hypergryph.com/upload/images/20190228/3ff086f1f6787959e61b2835edabe45c.png"
+                    alt=""></div>
+        </div>
+    </section>
+    <!--页脚-->
+    <footer class="footer">
+        <div class="fanz">
+            <div class="footer-content">
+                <ul>
+                    <li>用户注册协议</li>
+                    <li>游戏使用许可及服务协议</li>
+                    <li>防沉迷系统</li>
+                    <li>家长监护</li>
+                    <li>联系我们</li>
+                </ul>
+                <div class="ee1">
+                    <div>沪ICP备xxxxxxx号-x</div>
+                    <div>沪网文(2018) xxxx-xxx号</div>
+                    <div>ISBN xxx-x-xxx-xxxxx-x</div>
+                    <div>国新出审〔2019〕xx号</div>
+                    <div>沪公网安备 xxxxxxxxxxxxx号</div>
+                    <div>亲爱的市民朋友，上海警方反诈劝阻电话“962110”系专门针对避免您财产被骗受损而设，请您一旦收到来电，立即接听。</div>
+                </div>
+                <div class="e22">
+                    <div>合作媒体</div>
+                    <div>
+                        <select name="" id="">
+                            <option value="TapTap">TpTp</option>
+                            <option value="bilibili">bilibili</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="er">
+            <div>本网络游戏适合年满12周岁以上的用户使用；为了您的健康，请合理控制游戏时间。</div>
+            <div>抵制不良游戏 拒绝盗版游戏 注意自我保护 谨防受骗上当适度游戏益脑 沉迷游戏伤身 合理安排时间 享受健康生活</div>
+            <div class="er3">Copyright ©2017 上海哈角网络科技有限公司上海市哈汇区哈山路666号哈天哈息产业园ae幢1591电话：066-64366667
+                客服QQ：8008300xx</div>
+        </div>
+    </footer>
+    <!--点击事件-->
+    <script>
+        var ce = document.getElementsByClassName("btn")[0]
+        var ce1 = document.getElementsByClassName("btn-1")
+        var ca = 0
+        var ce3 = document.body.clientWidth * 80 / 100
+        //轮播适配
+        function a() {
+            let a = document.getElementsByClassName("banner")
+            let bb = document.getElementsByClassName("banner1")
+            let c = document.getElementsByClassName("lil")
+            let d = ce3 * 6
+            a[0].style.width = `${ce3}px`;
+            bb[0].style.width = `${d}px`
+            for (i = 0; i < c.length; i++) {
+                c[i].style.width = `${ce3}px`
+            }
+        }
+        a()
+        //轮播，目前顺序不对
+        function aaa() {
+            let ce2 = document.getElementsByClassName("banner1")
+            let ni = document.getElementsByClassName("a")
+            if (ca == 5) {
+                ce2[0].style.transitionDuration = "0s"
+                //无缝切换防止第一张时间翻倍
+                ce2[0].style.transform = `translateX(${-ce3}px)`
+                ca = 1
+                return
+            } else {
+                ce2[0].style.transitionDuration = "1s"
+            }
+            ca++
+            ce2[0].style.transform = `translateX(${-ce3*ca}px)`
+            //原生js没有选择全部兄弟元素的方法，引入jqurey解决
+            switch (ca) {
+                case 1:
+                    console.log("測試1")
+                    $(".a:nth-of-type(2)").addClass("change");
+                    $(".a:nth-of-type(2)").siblings().removeClass("change")
+                    break;
+                case 2:
+                    console.log("測試2")
+                    $(".a:nth-of-type(3)").addClass("change");
+                    $(".a:nth-of-type(3)").siblings().removeClass("change")
+                    break;
+                case 3:
+                    console.log("測試3")
+                    $(".a:nth-of-type(4)").addClass("change");
+                    $(".a:nth-of-type(4)").siblings().removeClass("change")
+                    break;
+                case 4:
+                    console.log("測試4")
+                    $(".a:nth-of-type(5)").addClass("change");
+                    $(".a:nth-of-type(5)").siblings().removeClass("change")
+                    break;
+                case 5:
+                    console.log("測試4")
+                    $(".a:nth-of-type(2)").addClass("change");
+                    $(".a:nth-of-type(2)").siblings().removeClass("change")
+                    break;
+
+            }
+        }
+        setInterval(aaa, 2000)
+        ce.addEventListener("click", () => {
+            let c = document.getElementsByClassName("content")[0]
+            if (ce1[0].classList.contains("rot1") && ce1[1].classList.contains("rot2") && ce1[2].classList
+                .contains("rot3")) {
+                ce1[0].classList.remove("rot1")
+                ce1[1].classList.remove("rot2")
+                ce1[2].classList.remove("rot3")
+            } else {
+                ce1[0].classList.add("rot1")
+                ce1[1].classList.add("rot2")
+                ce1[2].classList.add("rot3")
+            }
+            if (c.style.display == "none") {
+                c.style.display = "block";
+                c.classList.add("fadeInDown");
+                c.classList.remove("fadeInUp");
+            } else {
+                c.classList.add("fadeInUp");
+                c.classList.remove("fadeInDown");
+                c.style.display = "none";
+            }
+        })
+        //事件绑定
+        function banding() {
+            //图片偏移
+            $('.zuobiao').mousemove(function (e) {
+                var nidaye = e.originalEvent.x || e.originalEvent.layerX || 0;
+                var yy = e.originalEvent.y || e.originalEvent.layerY || 0;
+                console.log(nidaye)
+                $('.zuobiao>div').css("transform", `translate(${nidaye/200}px,${yy/100}px)`)
+                $('.zuobiao>div>img').css("transform", `translate(${nidaye/100}px,${yy/100}px)`)
+            })
+            //点击展开详情-------------------------------------
+            $(".yuanshi>img").bind("click", () => {
+                console.log("测试")
+            })
+        }
+        banding()
+    </script>
+</body>
+
+</html>

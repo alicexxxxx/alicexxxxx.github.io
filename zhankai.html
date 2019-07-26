@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>十六夜幽幽蝶</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" />
+    <!--播放器-->
+    <link rel="stylesheet" href="css/player.css">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script src="./live2d-widget1/autoload.js"></script>
     <style>
@@ -168,7 +170,7 @@
             }
         }
     </style>
-    <script>
+    <!-- <script>
         window.onload = function () {
             document.onkeydown = function () {
                 var e = window.event || arguments[0];
@@ -188,15 +190,15 @@
                 return false;
             }
         };
-    </script>
+    </script> -->
     <!--屏蔽右键-->
 </head>
 
 
 <body>
-    <iframe allow="autoplay" src="./music/yanshen.mp3" class="music" id="ra"></iframe>
-    <audio src="./music/yanshen.mp3" id="ad" autoplay loop></audio>
-    <script>
+    <!-- <iframe allow="autoplay" src="./music/yanshen.mp3" class="music" id="ra"></iframe>
+    <audio src="./music/yanshen.mp3" id="ad" autoplay loop></audio> -->
+    <!-- <script>
         (() => {
             var explorer = navigator.userAgent;
             var ad = document.getElementById('ad')
@@ -210,8 +212,62 @@
                 ra.src = ''
                 console.log(aaa)
             }
-        })()
+        })() -->
     </script>
+    <!--播放器-->
+    <div id="QPlayer">
+        <div id="pContent">
+            <div id="player">
+                <span class="cover"></span>
+                <div class="ctrl">
+                    <div class="musicTag marquee">
+                        <strong>Title</strong>
+                        <span> - </span>
+                        <span class="artist">Artist</span>
+                    </div>
+                    <div class="progress">
+                        <div class="timer left">0:00</div>
+                        <div class="contr">
+                            <div class="rewind icon"></div>
+                            <div class="playback icon"></div>
+                            <div class="fastforward icon"></div>
+                        </div>
+                        <div class="right">
+                            <div class="liebiao icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ssBtn">
+                <div class="adf"></div>
+            </div>
+        </div>
+        <ol id="playlist"></ol>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.marquee.min.js"></script>
+
+    <script>
+        var playlist = [{
+            title: "Gravity",
+            artist: "Jessica",
+            mp3: "http://www.ytmp3.cn/down/67155.mp3",
+            cover: "http://p4.music.126.net/7VJn16zrictuj5kdfW1qHA==/3264450024433083.jpg?param=106x106",
+        }];
+        var isRotate = true;
+        var autoplay = false;
+    </script>
+    <script src="js/player.js"></script>
+    <script>
+        function bgChange() {
+            var lis = $('.lib');
+            for (var i = 0; i < lis.length; i += 2)
+                lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+        }
+        window.onload = bgChange;
+    </script>
+    <!--播放器-->
     <div class="wrap">
         <!-- <div>
             <form method="post">
